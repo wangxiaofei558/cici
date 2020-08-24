@@ -1,0 +1,13 @@
+apply {
+    from    rootProject.file('gradle/springboot_common_settings.gradle')
+}
+
+/**
+ +----------------+
+ | Build Settings |
+ +----------------+
+ */
+dependencies {
+    implementation  'org.springframework.boot:spring-boot-starter-web'
+    runtimeOnly     'org.springframework.boot:spring-boot-starter-jetty'
+}

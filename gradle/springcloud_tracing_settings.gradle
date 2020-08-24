@@ -1,0 +1,9 @@
+/**
+ +----------------+
+ | Build Settings |
+ +----------------+
+ */
+dependencies {
+    implementation  'org.springframework.cloud:spring-cloud-starter-sleuth',
+                    'org.springframework.cloud:spring-cloud-starter-zipkin'
+}

@@ -1,0 +1,24 @@
+ext.java11 = Boolean.valueOf(
+    System.getProperty('cheche365.build.java11')
+        ?: System.getenv('CHECHE365__BUILD__JAVA11')
+        ?: Boolean.FALSE.toString())
+
+/**
+ +----------------+
+ | Build Settings |
+ +----------------+
+ */
+dependencies {
+    if (java11) {
+        runtimeOnly "javax.xml.bind:jaxb-api:$javax_jaxb_version",
+                    "com.sun.xml.bind:jaxb-core:$sun_jaxb_core_version",
+                    "com.sun.xml.bind:jaxb-impl:$sun_jaxb_impl_version"
+    }
+}
+
+tasks.withType(AbstractCompile) {
+    sourceCompatibility = java11 ? 11 : 8
+    targetCompatibility = java11 ? 11 : 8
+    options.encoding = 'UTF-8'
+    options.incremental = Boolean.valueOf(System.getProperty('gradle.compilation.incremental', gradle_compilation_incremental))
+}

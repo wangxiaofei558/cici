@@ -1,0 +1,57 @@
+/**
+ * 是否以maven local优先的方式加载组件
+ */
+def mavenLocalFirst = Boolean.valueOf(
+    System.getProperty('cheche365.build.mavenLocalFirst')
+        ?: System.getenv('CHECHE365__BUILD__MAVEN_LOCAL_FIRST')
+        ?: Boolean.FALSE.toString())
+
+repositories {
+    flatDir  dirs: "$rootProject.projectDir/libs"
+    if (mavenLocalFirst) {
+        mavenLocal()
+    }
+    maven {
+        url cheche365_repo_releases
+        content {
+            includeGroupByRegex 'com\\.cheche365\\..*'
+        }
+    }
+    maven {
+        url cheche365_repo_snapshots
+        content {
+            includeGroupByRegex 'com\\.cheche365\\..*'
+        }
+    }
+    maven { url maven_central_repo_mirror_aliyun }
+    mavenCentral()
+    jcenter()
+}
+
+configurations {
+//        all*.transitive = false
+    all*.exclude group: 'c3p0',                     module: 'c3p0'
+    all*.exclude group: 'commons-logging',          module: 'commons-logging'
+    all*.exclude group: 'com.zaxxer',               module: 'HikariCP'
+    all*.exclude group: 'log4j',                    module: 'log4j'
+    all*.exclude group: 'org.apache.tomcat',        module: 'tomcat-jdbc'
+    all*.exclude group: 'org.slf4j',                module: 'slf4j-jcl'
+    all*.exclude group: 'org.slf4j',                module: 'slf4j-log4j12'
+    all*.exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
+    all*.exclude group: 'stax',                     module: 'stax-api'
+    all {
+        resolutionStrategy {
+            eachDependency {
+                switch (it.requested.group) {
+                    case 'com.google.code.gson':
+                        it.useVersion gson_version
+                        break
+                }
+            }
+            // 不缓存动态版本
+            cacheDynamicVersionsFor 0, 'seconds'
+            // 不缓存快照模块
+            cacheChangingModulesFor 0, 'seconds'
+        }
+    }
+}

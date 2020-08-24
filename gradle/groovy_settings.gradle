@@ -1,0 +1,24 @@
+apply {
+    plugin      'groovy'        // Groovy
+    plugin      'codenarc'      // Groovy静态检查
+}
+
+
+/**
+ * Groovy Plugin Task Settings
+ */
+def groovyIndyEnabled = Boolean.valueOf(System.getProperty('groovy.indy.enabled', groovy_indy_enabled))
+if (groovyIndyEnabled) {
+    tasks.withType(GroovyCompile) {
+        groovyOptions.optimizationOptions.indy = true
+    }
+}
+
+/**
+ * CodeNarc Plugin Task Settings
+ */
+codenarc {
+    toolVersion = codenarc_version
+    configFile = rootProject.file('conf/engineering-process/static-checking/groovy/codenarc.gcfg')
+    ignoreFailures = Boolean.valueOf(System.getProperty('gradle.build.codenarc.ignoreFailures', Boolean.FALSE.toString()))       // 是否忽略失败，默认为否，即不忽略任何失败，必须改掉
+}

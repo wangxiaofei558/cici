@@ -1,0 +1,20 @@
+apply {
+    from rootProject.file('gradle/springboot_classpath_jar_settings.gradle')
+    from rootProject.file('gradle/springboot_web_settings.gradle')
+//    from rootProject.file('gradle/springcloud_common_settings.gradle')
+//    from rootProject.file('gradle/springcloud_tracing_settings.gradle')
+}
+
+
+dependencies {
+    api 'org.springframework.boot:spring-boot-starter-web',
+            'org.springframework.boot:spring-boot-starter-aop',
+            'com.google.guava:guava:28.2-jre'
+    api 'org.apache.rocketmq:rocketmq-client:4.3.0',
+            "com.cheche365.integration:cheche365-integration:2.36.0-SNAPSHOT",
+            'org.springframework.boot:spring-boot-starter-data-redis'
+//
+//    // https://mvnrepository.com/artifact/org.apache.commons/commons-pool2
+//    compile 'org.apache.commons:commons-pool2:2.5.0'
+
+}

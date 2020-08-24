@@ -1,0 +1,12 @@
+/**
+ +----------------+
+ | Build Settings |
+ +----------------+
+ */
+dependencies {
+
+    // Spring Framework
+    runtimeOnly     "org.springframework.cloud:spring-cloud-starter-netflix-eureka-client",
+                    "org.springframework.cloud:spring-cloud-starter-netflix-hystrix"
+
+}

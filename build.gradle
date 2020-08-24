@@ -1,0 +1,47 @@
+version = project_version
+
+/**
+ +---------+
+ | Plugins |
+ +---------+
+ */
+buildscript {
+    repositories {
+        flatDir dirs: "$rootProject.projectDir/gradle/plugins"
+        maven { url maven_central_repo_mirror_aliyun }
+        mavenCentral()
+        jcenter()
+        maven { url spring_plugin_repo_release }
+        maven { url gradle_plugin_repo }
+    }
+
+    dependencies {
+        classpath 'com.github.ben-manes:gradle-versions-plugin:0.22.0',
+                'io.freefair.gradle:lombok-plugin:4.0.0',
+//                    'io.spring.javaformat:spring-javaformat-gradle-plugin:0.0.15',
+                "org.springframework.boot:spring-boot-gradle-plugin:$spring_boot_starter_version"
+    }
+}
+
+/**
+ +----------------+
+ | Build Settings |
+ +----------------+
+ */
+subprojects {
+
+    apply {
+        from rootProject.file('gradle/default_plugins.gradle')
+        from rootProject.file('gradle/default_deps.gradle')
+        // <pi-anchor|text,#=#((:when %1) (= (:language %2) :groovy) %3)>
+        from rootProject.file('gradle/groovy_essential_deps.gradle')
+        from rootProject.file('gradle/groovy_settings.gradle')
+        // </>
+        from rootProject.file('gradle/java_settings.gradle')
+        from rootProject.file('gradle/java11_settings.gradle')
+        from rootProject.file('gradle/legacy_spring_project_settings.gradle')
+        from rootProject.file('gradle/versioning_settings.gradle')
+        from rootProject.file('gradle/verification_settings.gradle')
+    }
+
+}

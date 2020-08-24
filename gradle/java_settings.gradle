@@ -1,0 +1,8 @@
+/**
+ * Built-in Task Settings
+ */
+jar {
+    manifest {
+        attributes 'Implementation-Version' : project_version
+    }
+}

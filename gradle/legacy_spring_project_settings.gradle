@@ -1,0 +1,12 @@
+// 是否是旧式（1.x版本）遗产Spring项目
+def legacySpringProject = project.ext.properties.legacy_spring_project.with { legacySpringProject ->
+    Boolean.valueOf(legacySpringProject ? legacySpringProject : Boolean.FALSE.toString())
+}
+if (!legacySpringProject) {
+    dependencyManagement {
+        imports {
+            mavenBom "org.springframework.boot:spring-boot-dependencies:$spring_boot_starter_version"
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:$spring_cloud_dep_version"
+        }
+    }
+}
