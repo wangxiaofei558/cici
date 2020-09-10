@@ -1,14 +1,13 @@
 package com.leetcode.easy;
 
 import com.leetcode.common.ListNode;
-import org.springframework.stereotype.Component;
 
 
 
 /**
  * 相交链表
  */
-@Component
+//@Component
 public
 class GetIntersectionNodeSolution {
 

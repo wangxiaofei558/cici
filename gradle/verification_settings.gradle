@@ -2,8 +2,6 @@ dependencies {
     // P3C
     pmd                 "com.alibaba.p3c:p3c-pmd:$ali_p3c_pmd_version"
 
-    // CheChe365
-    testImplementation  "com.cheche365.test:cheche365-test-core:${getProjectVersion(cheche365_version)}"
 
     // Spock Framework
     testRuntimeOnly     "org.spockframework:spock-spring:$spockframework_version"

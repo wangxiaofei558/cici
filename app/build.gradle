@@ -13,6 +13,9 @@ dependencies {
     api 'org.apache.rocketmq:rocketmq-client:4.3.0',
             "com.cheche365.integration:cheche365-integration:2.36.0-SNAPSHOT",
             'org.springframework.boot:spring-boot-starter-data-redis'
+
+    api 'com.netflix.ribbon:ribbon-core',
+            'com.netflix.ribbon:ribbon-httpclient'
 //
 //    // https://mvnrepository.com/artifact/org.apache.commons/commons-pool2
 //    compile 'org.apache.commons:commons-pool2:2.5.0'

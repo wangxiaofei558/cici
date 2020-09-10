@@ -1,6 +1,6 @@
 ext.useSpecificVersion = Boolean.valueOf(
-    System.getProperty('cheche365.build.useSpecificVersion')
-        ?: System.getenv('CHECHE365__BUILD__USE_SPECIFIC_VERSION')
+    System.getProperty('build.useSpecificVersion')
+        ?: System.getenv('BUILD__USE_SPECIFIC_VERSION')
         ?: Boolean.TRUE.toString())
 
 /**
@@ -14,10 +14,10 @@ ext.getProjectVersion = { specificVersion = null ->
         return specificVersion
     }
 
-    def buildVersionPropName = 'cheche365.build.version'
-    def buildVersionEnvName = 'CHECHE365__BUILD__VERSION'
-    def buildVersionFilePathPropName = 'cheche365.build.versionFilePath'
-    def buildVersionFilePathEnvName = 'CHECHE365__BUILD__VERSION_FILE_PATH'
+    def buildVersionPropName = 'build.version'
+    def buildVersionEnvName = 'BUILD__VERSION'
+    def buildVersionFilePathPropName = 'build.versionFilePath'
+    def buildVersionFilePathEnvName = 'BUILD__VERSION_FILE_PATH'
     def currentVersion = System.getProperty(buildVersionPropName)
         ?: System.getenv(buildVersionEnvName)
         ?: (System.getProperty(buildVersionFilePathPropName)

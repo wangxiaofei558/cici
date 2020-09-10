@@ -2,7 +2,6 @@ package com.controller.impl
 
 import com.annotation.ClearCache
 import com.controller.api.IFlow
-import com.service.EntityNeedChangeService
 import groovy.transform.CompileStatic
 import groovy.transform.TupleConstructor
 import groovy.util.logging.Slf4j
@@ -25,8 +24,6 @@ import org.springframework.web.bind.annotation.RestController
 @Validated
 class Flow implements IFlow {
 
-//    private EntityNeedChangeService entityNeedChangeService
-
     private StringRedisTemplate stringRedisTemplate
 
     @Override
@@ -37,8 +34,6 @@ class Flow implements IFlow {
 
     @Override
     ResponseEntity test() {
-//        entityNeedChangeService.send(new Object(), [entityChangeType: new Object()])
-
         stringRedisTemplate.opsForSet().add('abc', '123456789')
 
         stringRedisTemplate.opsForSet().remove('abc', '123456789')

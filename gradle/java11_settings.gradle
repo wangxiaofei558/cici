@@ -1,6 +1,6 @@
 ext.java11 = Boolean.valueOf(
-    System.getProperty('cheche365.build.java11')
-        ?: System.getenv('CHECHE365__BUILD__JAVA11')
+    System.getProperty('build.java11')
+        ?: System.getenv('BUILD__JAVA11')
         ?: Boolean.FALSE.toString())
 
 /**

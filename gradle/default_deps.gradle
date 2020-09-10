@@ -2,26 +2,14 @@
  * 是否以maven local优先的方式加载组件
  */
 def mavenLocalFirst = Boolean.valueOf(
-    System.getProperty('cheche365.build.mavenLocalFirst')
-        ?: System.getenv('CHECHE365__BUILD__MAVEN_LOCAL_FIRST')
+    System.getProperty('build.mavenLocalFirst')
+        ?: System.getenv('BUILD__MAVEN_LOCAL_FIRST')
         ?: Boolean.FALSE.toString())
 
 repositories {
     flatDir  dirs: "$rootProject.projectDir/libs"
     if (mavenLocalFirst) {
         mavenLocal()
-    }
-    maven {
-        url cheche365_repo_releases
-        content {
-            includeGroupByRegex 'com\\.cheche365\\..*'
-        }
-    }
-    maven {
-        url cheche365_repo_snapshots
-        content {
-            includeGroupByRegex 'com\\.cheche365\\..*'
-        }
     }
     maven { url maven_central_repo_mirror_aliyun }
     mavenCentral()
