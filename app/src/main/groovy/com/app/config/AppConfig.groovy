@@ -1,6 +1,5 @@
 package com.app.config
 
-import com.cheche365.integration.config.IntegrationConfig
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.ComponentScan
 import org.springframework.context.annotation.Configuration
@@ -20,7 +19,7 @@ import org.springframework.data.redis.core.StringRedisTemplate
         'com.aspect',
         'com.service'
 ])
-class AppConfig extends IntegrationConfig {
+class AppConfig {
 
     @Bean
     StringRedisTemplate stringRedisTemplate(RedisConnectionFactory redisConnectionFactory){

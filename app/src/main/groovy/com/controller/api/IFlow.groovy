@@ -25,12 +25,4 @@ interface IFlow {
     @GetMapping('/flow/business')
     ResponseEntity sayHello()
 
-    /**
-     * 分配业务员
-     * @param DPolicy 保单
-     * @return 标准响应格式
-     */
-    @GetMapping('/flow/integration')
-    ResponseEntity test()
-
 }

@@ -24,23 +24,10 @@ import org.springframework.web.bind.annotation.RestController
 @Validated
 class Flow implements IFlow {
 
-    private StringRedisTemplate stringRedisTemplate
-
     @Override
     @ClearCache(['为人民服务', '同志们辛苦了'])
     ResponseEntity sayHello() {
-        return new ResponseEntity('你好侯娟', HttpStatus.OK)
+        return new ResponseEntity('你好猴嘟嘟', HttpStatus.OK)
     }
 
-    @Override
-    ResponseEntity test() {
-        stringRedisTemplate.opsForSet().add('abc', '123456789')
-
-        stringRedisTemplate.opsForSet().remove('abc', '123456789')
-
-        ['5_abc', '10_abc', '60_abc', '360_abc'].iterator()
-
-
-        return new ResponseEntity('你好侯娟', HttpStatus.OK)
-    }
 }
